@@ -1,0 +1,40 @@
+/* Quiz.css */
+
+#emoji {
+  font-size: 150px;
+  margin: 0 auto;
+  text-align: center;
+
+}
+  .radios {
+    display: flex; /* make the radios inline-block */
+    justify-content: center; /* center align the radios */
+    margin-top: 30px; /* add some space between the emoji and radios */
+    margin-bottom: 30px;
+  }
+  
+  .radio {
+    margin: 0 35px;
+    transform: scale(5);
+    accent-color: aqua;
+  }
+  .question {
+    border: 1px solid #ccc; /* add a border around the quiz container */
+    padding: 20px; /* add some padding inside the container */
+    width: 800px; /* set a fixed width for the container */
+    margin: 40px auto; /* center the container horizontally */
+    background-color: #f9f9f9; /* add a light gray background color */
+    border-radius: 10px; /* add a slight rounded corner to the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* add a subtle shadow effect */
+  }
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
