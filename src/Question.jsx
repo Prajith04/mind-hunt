@@ -1,74 +1,114 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import QuestionBox from './QuestionBox.jsx';
+import './Question.css';
 
 const questions = [
-  // Extraversion (E) vs. Introversion (I)
-  { question: '1. I feel energized when I spend time with a large group of people.' },
-  { question: '2. I prefer to work on projects alone rather than with others.' },
-  { question: '3. I enjoy being the center of attention.' },
-  { question: '4. I often need time to recharge after social interactions.' },
-  { question: '5. I prefer to express my thoughts and ideas out loud rather than keeping them to myself.' },
-  { question: '6. I find large social gatherings to be stimulating and fun.' },
-  { question: '7. I often seek out new experiences and adventures with others.' },
-  { question: '8. I enjoy spending my free time in the company of others rather than alone.' },
-  { question: '9. I am comfortable initiating conversations with strangers.' },
-  { question: '10. I feel drained after prolonged periods of solitude.' },
-
-  // Sensing (S) vs. Intuition (N)
-  { question: '11. I focus on the details rather than the big picture.' },
-  { question: '12. I trust facts and evidence more than theories and concepts.' },
-  { question: '13. I enjoy imagining different possibilities for the future.' },
-  { question: '14. I prefer to rely on my experiences rather than my instincts.' },
-  { question: '15. I pay close attention to the details of my surroundings.' },
-  { question: '16. I trust my direct experience over abstract theories or ideas.' },
-  { question: '17. I prefer practical and hands-on activities over theoretical discussions.' },
-  { question: '18. I focus on the present moment rather than thinking about the future.' },
-  { question: '19. I value accuracy and precision in my work.' },
-  { question: '20. I am more interested in concrete facts than in imaginative possibilities.' },
-
-  // Thinking (T) vs. Feeling (F)
-  { question: '21. I make decisions based on logical analysis rather than personal values.' },
-  { question: '22. I prioritize harmony and cooperation over being objective and fair.' },
-  { question: '23. I find it more important to be truthful than to be tactful.' },
-  { question: '24. I often consider how my decisions will affect others’ feelings.' },
-  { question: '25. I make decisions based on logical reasoning rather than emotions.' },
-  { question: '26. I value honesty and straightforwardness over tact and diplomacy.' },
-  { question: '27. I prioritize objective criteria over personal relationships in decision-making.' },
-  { question: "28. I am more interested in finding solutions than in understanding people's feelings." },
-  { question: '29. I prefer to critique and analyze rather than to offer support and encouragement.' },
-  { question: '30. I believe that being fair and impartial is more important than being compassionate.' },
-
-  // Judging (J) vs. Perceiving (P)
-  { question: '31. I prefer to have a clear plan and follow it rather than being spontaneous.' },
-  { question: '32. I feel more comfortable when my life is organized and structured.' },
-  { question: '33. I like to make decisions quickly and stick to them.' },
-  { question: '34. I find it satisfying to complete tasks and check them off my list.' },
-  { question: '35. I am more productive when I have a schedule to follow.' },
-  { question: '36. I prefer to know what to expect rather than dealing with surprises.' },
-  { question: '37. I value punctuality and deadlines.' },
-  { question: '38. I like to plan my activities well in advance.' },
-  { question: '39. I find it difficult to relax when there are tasks left unfinished.' },
-  { question: '40. I prefer a controlled and predictable environment over an open and flexible one.' },
+  { question: '1. Do you feel energized after spending time alone?' },
+  { question: '2. Do you often find yourself thinking about future possibilities and potential outcomes?' },
+  { question: '3. Do you prefer to make decisions based on logic and objective analysis?' },
+  { question: '4. Do you prefer to have a clear plan and stick to it rather than be spontaneous?' },
+  { question: '5. Do you prefer deep, one-on-one conversations over group discussions?' },
+  { question: '6. Do you enjoy brainstorming and coming up with new ideas?' },
+  { question: '7. Do you value fairness and consistency when resolving conflicts?' },
+  { question: '8. Do you feel more comfortable when decisions are made and things are settled?' },
+  { question: '9. Do you often find social events overwhelming or draining?' },
+  { question: '10. Do you rely on your gut feelings or instincts when making decisions?' },
+  { question: '11. Do you often find yourself prioritizing tasks and goals over personal relationships?' },
+  { question: '12. Do you enjoy setting goals and working systematically towards achieving them?' },
+  { question: '13. Do you prefer to observe a situation before participating?' },
+  { question: '14. Do you prefer to focus on the big picture rather than the details?' },
+  { question: '15. Do you feel comfortable critiquing and giving constructive feedback?' },
+  { question: '16. Do you prefer to complete tasks well in advance of deadlines?' },
+  { question: '17. Do you enjoy solitary activities like reading, writing, or crafting?' },
+  { question: '18. Do you enjoy abstract concepts and theoretical discussions?' },
+  { question: '19. Do you strive to remain detached and impartial when evaluating a situation?' },
+  { question: '20. Do you find satisfaction in organizing and structuring your environment?' },
+  { question: '21. Do you feel energized by spending time with others?' },
+  { question: '22. Do you prefer to deal with facts and concrete details rather than ideas and theories?' },
+  { question: '23. Do you make decisions based on personal values and how they will affect others?' },
+  { question: '24. Do you prefer to keep your options open and be flexible rather than follow a fixed plan?' },
+  { question: '25. Do you find it easy to start conversations with strangers?' },
+  { question: '26. Do you find comfort in routine and familiar experiences?' },
+  { question: '27. Do you prioritize maintaining harmony and positive relationships?' },
+  { question: '28. Do you feel comfortable adapting to new situations and changing plans on the fly?' },
+  { question: '29. Do you enjoy being the center of attention?' },
+  { question: '30. Do you trust information that comes from your direct experience and senses?' },
+  { question: "31. Do you find it important to empathize with and understand others' emotions?" },
+  { question: '32. Do you enjoy exploring new ideas and opportunities as they arise?' },
+  { question: '33. Do you thrive in busy, fast-paced environments?' },
+  { question: '34. Do you focus more on the present moment and immediate reality?' },
+  { question: "35. Do you often consider the impact of your actions on others' feelings?" },
+  { question: '36. Do you often find yourself procrastinating and working best under pressure?' },
+  { question: '37. Do you enjoy participating in team activities and group projects?' },
+  { question: '38. Do you enjoy practical, hands-on activities and tasks?' },
+  { question: '39. Do you seek to create an inclusive and supportive environment for everyone?' },
+  { question: '40. Do you thrive in environments that are spontaneous and allow for improvisation?' },
 ];
 
-const Question = () => {
-  const [answers, setAnswers] = useState({});
 
-  const handleRadioChange = (questionIndex, emojiIndex) => {
-    setAnswers((prevAnswers) => ({...prevAnswers, [questionIndex]: emojiIndex }));
+const initializeAnswers = () => {
+  const answers = {};
+  for (let i = 0; i < questions.length; i++) {
+    answers[i] = 0;
+  }
+  return answers;
+};
+
+const Question = () => {
+  const [answers, setAnswers] = useState(initializeAnswers());
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  const handleSubmit = () => {
+   console.log(answers)
+   fetch('http://localhost:3000/submit-answers', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(answers),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  };
+
+  const handleNext = () => {
+    setCurrentQuestionIndex((prevIndex) => Math.min(prevIndex + 1, questions.length - 1));
+  };
+
+  const handlePrev = () => {
+    setCurrentQuestionIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const handleChange = (questionIndex, emojiIndex) => {
+    setAnswers((prevAnswers) => ({
+      ...prevAnswers,
+      [questionIndex]: Number(emojiIndex),
+    }));
   };
 
   return (
     <div>
-      {questions.map((question, index) => (
-        <QuestionBox
-          key={index}
-          question={question.question}
-          onChange={handleRadioChange}
-          selectedEmoji={answers[index]}
-          questionIndex={index}
-        />
-      ))}
+      <QuestionBox
+        key={currentQuestionIndex}
+        question={questions[currentQuestionIndex].question}
+        selectedEmoji={answers[currentQuestionIndex]}
+        questionIndex={currentQuestionIndex}
+        onChange={handleChange}
+      />
+      
+      <button id='prev'onClick={handlePrev} disabled={currentQuestionIndex === 0}>{'<'}</button>
+      <button id='next'onClick={handleNext} disabled={currentQuestionIndex === questions.length - 1}>{'>'}</button>
+      <button  onClick={handleSubmit}className="pushable" style={{display:currentQuestionIndex===39?'block':'none'}} >
+  <span className="front">
+   Submit
+  </span>
+</button>
+
     </div>
   );
 };
