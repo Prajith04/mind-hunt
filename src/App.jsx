@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component }from "react";
+import  { useState } from 'react'
 import {
     BrowserRouter as Router,
     Routes,
@@ -7,10 +8,10 @@ import {
 import Question from "./Question";
 import Contact from './Contact';
 import About from './About';
+import Result from './Result'
 import "./App.css";
 import NavBar from "./NavBar";
-class App extends Component {
-    render() {
+function App() {
         return (
             <>
             <NavBar></NavBar>
@@ -28,11 +29,14 @@ class App extends Component {
                             path="/contact"
                             element={<Contact />}
                         ></Route>
+                         <Route
+                            path="/result"
+                            element={<Result />}
+                        ></Route>
                     </Routes>
             </Router>
             </>
         );
     }
-}
 
 export default App;

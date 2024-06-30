@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import QuestionBox from './QuestionBox.jsx';
 import './Question.css';
+import { useNavigate } from 'react-router-dom';
 
 const questions = [
   { question: '1. Do you feel energized after spending time alone?' },
@@ -57,7 +58,7 @@ const initializeAnswers = () => {
 const Question = () => {
   const [answers, setAnswers] = useState(initializeAnswers());
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
+  const navigate=useNavigate();
   const handleSubmit = () => {
    console.log(answers)
    fetch('http://localhost:3000/submit-answers', {
@@ -69,7 +70,9 @@ const Question = () => {
   })
     .then(response => response.json())
     .then(data => {
-      console.log('Success:', data);
+      const { mbtiType } = data; // Extract only mbtiType from the response data
+      console.log('MBTI Type:', mbtiType);
+      navigate('/result', { state: { mbtiType } });
     })
     .catch((error) => {
       console.error('Error:', error);
