@@ -61,7 +61,7 @@ const Question = () => {
   const navigate=useNavigate();
   const handleSubmit = () => {
    console.log(answers)
-   fetch('http://localhost:3000/submit-answers', {
+   fetch('https://mind-hunt-server.vercel.app/submit-answers', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
