@@ -1,11 +1,13 @@
 /* Result.css */
 .result {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh; /* Full viewport height */
     text-align: center;
+    margin-left: 20%;
+    margin-right:20% ;
+    margin-top: 40px;
+    padding: 10px;
 }
 
 .imgcon {
@@ -30,3 +32,11 @@
     font-size: 24px;
     font-weight: bold;
 }
+.traits{
+    background-color: rgba(0, 0, 0, 0.707);
+    color: white;
+    border-radius: 5px;
+    padding: 15px;
+    
+}
+
