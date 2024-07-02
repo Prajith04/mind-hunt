@@ -4,7 +4,7 @@ import './QuestionBox.css';
 const emojis = ['😍', '😀', '😑', '😦', '😠'];
 
 const QuestionBox = ({ question,onChange, selectedEmoji, questionIndex,onClick }) => {
-  const [emojiIndex, setEmojiIndex] = useState(selectedEmoji || 0);
+  const [emojiIndex, setEmojiIndex] = useState(selectedEmoji || null);
   const [animate, setAnimate] = useState(false);
 
   const handleRadioChange = (event) => {
@@ -19,7 +19,7 @@ const QuestionBox = ({ question,onChange, selectedEmoji, questionIndex,onClick }
   const handleClick=()=>{
     setTimeout(()=>{
       onClick();
-    },700);
+    },2000);
    
   }
 
@@ -27,7 +27,7 @@ const QuestionBox = ({ question,onChange, selectedEmoji, questionIndex,onClick }
     <div className="question">
       <h2>{question}</h2>
       <div id="emoji" style={{ animation: animate ? 'bounce 0.5s ease-in-out' : 'none' }}>
-        {emojis[emojiIndex]}
+        {emojiIndex===null?'👇':emojis[emojiIndex]}
       </div>
       <div className="radios">
         {emojis.map((emoji, index) => (
