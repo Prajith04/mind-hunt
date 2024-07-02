@@ -1,0 +1,8 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body { /* Ensure full viewport height */
+    background: linear-gradient(to top right, #8B5CF6, #EC4899);
+}
