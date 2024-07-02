@@ -102,6 +102,7 @@ const Question = () => {
         selectedEmoji={answers[currentQuestionIndex]}
         questionIndex={currentQuestionIndex}
         onChange={handleChange}
+        onClick={handleNext}
       />
       
       <button id='prev'onClick={handlePrev} disabled={currentQuestionIndex === 0}>{'<'}</button>

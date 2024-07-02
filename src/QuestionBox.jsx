@@ -3,7 +3,7 @@ import './QuestionBox.css';
 
 const emojis = ['😍', '😀', '😑', '😦', '😠'];
 
-const QuestionBox = ({ question,onChange, selectedEmoji, questionIndex }) => {
+const QuestionBox = ({ question,onChange, selectedEmoji, questionIndex,onClick }) => {
   const [emojiIndex, setEmojiIndex] = useState(selectedEmoji || 0);
   const [animate, setAnimate] = useState(false);
 
@@ -16,6 +16,12 @@ const QuestionBox = ({ question,onChange, selectedEmoji, questionIndex }) => {
       setAnimate(false);
     }, 500);
   };
+  const handleClick=()=>{
+    setTimeout(()=>{
+      onClick();
+    },700);
+   
+  }
 
   return (
     <div className="question">
@@ -32,6 +38,7 @@ const QuestionBox = ({ question,onChange, selectedEmoji, questionIndex }) => {
               value={index}
               checked={emojiIndex === index}
               onChange={handleRadioChange}
+              onClick={handleClick}
               className="radio"
             />
           </label>
