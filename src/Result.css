@@ -1,0 +1,32 @@
+/* Result.css */
+.result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+}
+
+.imgcon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.imgcon img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional: for rounded corners */
+    animation: fadeIn 5s forwards;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+
+.type {
+    font-size: 24px;
+    font-weight: bold;
+}
