@@ -1,0 +1,37 @@
+.quiz{
+    border: 1px solid black;
+    margin-top: 30px;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 15px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+h1{
+    font-size: 35px;
+}
+h2{
+    font-size: 25px;
+}
+li{
+    list-style: none;
+    font-size: 25px;
+    padding: 10px;
+    border: transparent;
+    background-color: white;
+    margin: 20px;
+    border-radius: 5px;
+}
+li:hover{
+    box-shadow: 0 0 15px rgba(255, 255,255);
+}
+li:active {
+    animation: bounce 0.5s ease-out;
+}
+@keyframes bounce {
+    0%{transform: scale(1);}
+    50%{transform: scale(1.1);}
+    100%{transform: scale(1);}
+  }

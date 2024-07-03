@@ -8,7 +8,8 @@ import {
 import Question from "./Question";
 import Contact from './Contact';
 import About from './About';
-import Result from './Result'
+import Result from './Result';
+import Quiz from './careerQuestions';
 import "./App.css";
 import NavBar from "./NavBar";
 function App() {
@@ -32,6 +33,10 @@ function App() {
                          <Route
                             path="/result"
                             element={<Result />}
+                        ></Route>
+                        <Route
+                            path="/career"
+                            element={<Quiz />}
                         ></Route>
                     </Routes>
             </Router>
