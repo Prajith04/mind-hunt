@@ -19,7 +19,7 @@ const QuestionBox = ({ question,onChange, selectedEmoji, questionIndex,onClick }
   const handleClick=()=>{
     setTimeout(()=>{
       onClick();
-    },2000);
+    },1000);
    
   }
 

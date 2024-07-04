@@ -829,7 +829,20 @@ function App() {
       setCurrentQuestionIndex(nextIndex);
     } else {
       // Quiz completed, display results
+      const topScoringTopics = Object.keys(topicScores).sort((a, b) => topicScores[b] - topicScores[a]).slice(0, 3);
       alert('Quiz completed! Your scores:\n' + JSON.stringify(topicScores, null, 2));
+      const careerMap = {
+        codingTheory: ['Software Engineer', 'Developer', 'Programmer'],
+        networkWizardry: ['Network Administrator', 'IT Consultant'],
+        databaseDynamics: ['Database Administrator', 'Data Analyst', 'Business Intelligence Developer'],
+        artificialIntelligence: ['AI/ML Engineer', 'Data Scientist', 'Researcher'],
+        userExperience: ['UX Designer', 'UI Developer', 'Human-Computer Interaction Specialist'],
+        cyberSecurity: ['Cybersecurity Specialist', 'Penetration Tester', 'Information Security Manager'],
+        gameDevelopment: ['Game Developer', 'Game Designer', '3D Artist'],
+      };
+    
+      const recommendedCareers = topScoringTopics.flatMap((topic) => careerMap[topic]);
+      alert('Based on your scores, we recommend the following careers:\n' + JSON.stringify(recommendedCareers));
     }
   };
 
