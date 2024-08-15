@@ -12,7 +12,10 @@ import Result from './Result';
 import Quiz from './careerQuestions';
 import "./App.css";
 import NavBar from "./NavBar";
+import CareerResult from "./careerresult";
+
 function App() {
+    const [scores, setScores] = useState(null);
         return (
             <>
             <NavBar></NavBar>
@@ -36,7 +39,11 @@ function App() {
                         ></Route>
                         <Route
                             path="/career"
-                            element={<Quiz />}
+                            element={<Quiz setScores={setScores} />}
+                        ></Route>
+                        <Route
+                            path="/careerresult"
+                            element={<CareerResult scores={scores}/>}
                         ></Route>
                     </Routes>
             </Router>

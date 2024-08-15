@@ -1,4 +1,5 @@
 import './careerQuestions.css'
+import { useNavigate } from 'react-router-dom';
 const technicalQuestions = [
     {
       "question": "When designing a system, I'm more concerned with:",
@@ -788,7 +789,8 @@ const technicalQuestions = [
   ];
   import React, { useState } from 'react';
 
-function App() {
+function Quiz({setScores}) {
+  const navigate=useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [topicScores, setTopicScores] = useState({
     codingTheory: 0,
@@ -831,6 +833,7 @@ function App() {
       // Quiz completed, display results
       const topScoringTopics = Object.keys(topicScores).sort((a, b) => topicScores[b] - topicScores[a]).slice(0, 3);
       alert('Quiz completed! Your scores:\n' + JSON.stringify(topicScores, null, 2));
+      setScores(topicScores)
       const careerMap = {
         codingTheory: ['Software Engineer', 'Developer', 'Programmer'],
         networkWizardry: ['Network Administrator', 'IT Consultant'],
@@ -840,9 +843,15 @@ function App() {
         cyberSecurity: ['Cybersecurity Specialist', 'Penetration Tester', 'Information Security Manager'],
         gameDevelopment: ['Game Developer', 'Game Designer', '3D Artist'],
       };
-    
       const recommendedCareers = topScoringTopics.flatMap((topic) => careerMap[topic]);
       alert('Based on your scores, we recommend the following careers:\n' + JSON.stringify(recommendedCareers));
+      navigate('/careerresult', { 
+        state: { 
+          scores: topicScores, 
+          careers: recommendedCareers,
+          toptopics:topScoringTopics
+        } 
+      });
     }
   };
 
@@ -876,4 +885,4 @@ function App() {
   );
 }
 
-export default App;
+export default Quiz;

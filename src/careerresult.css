@@ -1,0 +1,18 @@
+.careerresult{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.bar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+p{
+    background: linear-gradient(to bottom, #cb60b3 0%,#ad1283 50%,#de47ac 100%); 
+    padding: 10px;
+    border-radius: 10px;
+    width:fit-content;
+    font-size: 24px;
+}
